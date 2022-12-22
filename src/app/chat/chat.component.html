@@ -1,0 +1,20 @@
+<div class="main">
+  <div class="chat">
+    <div class="chat-header">
+      <div class="chat-header__title">Chat</div>
+    </div>
+    <div class="chat-body">
+      <div class="chat-body__messages">
+        <div class="chat-body__message" *ngFor="let message of messages">
+          <div class="chat-body__message__text"><p> {{message}} </p></div>
+
+        </div>
+      </div>
+      <div class="chat-body__input">
+        <input type="text" [(ngModel)]="message">
+        <button (click)="sendMessage()">Send</button>
+      </div>
+
+    </div>
+  </div>
+</div>
