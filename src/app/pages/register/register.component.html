@@ -1,0 +1,23 @@
+<div class="main">
+  <div class="left">
+    <div class="logo">
+      <img src="assets/logo/logo_svg_sketchy.svg" alt="logo" class="logo_img"/>
+    </div>
+  </div>
+  <div class="right">
+    <div class="login_page">
+      <h3 class="login_title">Register</h3>
+      <form class="login-form" [formGroup]="dataForm" (ngSubmit)="register()">
+        <input type="text" placeholder="name" class="login_input" formControlName="name"/>
+        <input type="text" placeholder="email" class="login_input" formControlName="email"/>
+        <input type="password" placeholder="password" class="login_input" formControlName="password"/>
+        <input type="password" placeholder="confirm password" class="login_input" formControlName="confirmPassword"/>
+        <button class="login_button" type="submit">login</button>
+        <p class="message">Not registered? <a routerLink="/register">Create an account</a></p>
+      </form>
+  </div>
+</div>
+
+
+
+

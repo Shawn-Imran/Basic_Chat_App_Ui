@@ -2,6 +2,10 @@
   <div class="chat">
     <div class="chat-header">
       <div class="chat-header__title">Chat</div>
+      <div>
+        <p>{{user.name}}</p>
+        <button (click)="logout()">Logout</button>
+      </div>
     </div>
     <div class="chat-body">
       <div class="chat-body__messages">
