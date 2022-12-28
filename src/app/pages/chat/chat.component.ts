@@ -16,8 +16,10 @@ const SOCKET_END_POINT = 'http://localhost:3001/chat';
 export class ChatComponent implements OnInit {
   socket:any;
   message!:string;
-  messages: string[] = [];
+  messageobj:any = {};
+  messages: any[] = [];
   isUserAuth = false;
+  htmlclass = 'leftright';
   user: User = {
     name: '',
     email: '',
@@ -31,19 +33,34 @@ export class ChatComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // console.log('chat init');
+
     this.userService.getUserStatusListener().subscribe(() => {
+      // console.log('user is auth');
       this.isUserAuth = this.userService.getUserStatus();
-      console.log('user is auth');
       if (this.isUserAuth) {
         this.getLoggedInUserInfo();
-
       }
     });
+    this.isUserAuth = this.userService.getUserStatus();
+    if (this.isUserAuth) {
+      this.getLoggedInUserInfo();
+      // console.log('user is auth');
+
+    }
 
     this.socket = io(SOCKET_END_POINT);
-    this.getMessages().subscribe((message: any) => {
-      this.messages.push(message);
+    this.getMessages().subscribe((messageobj: any) => {
+      this.messages.push(messageobj);
     });
+    console.log(this.messages);
+
+    for (const obj of this.messages) {
+      if (obj.senderId == this.user._id) {
+        this.htmlclass = 'self';
+      }
+    }
+
   }
 
 
@@ -58,7 +75,12 @@ export class ChatComponent implements OnInit {
 
 
   sendMessage(){
-    this.socket.emit('message',this.message);
+    this.messageobj = {
+      message: this.message,
+      senderId: this.user._id,
+      sendername: this.user.name,
+    }
+    this.socket.emit('message',this.messageobj);
     // this.messages.push(this.message);
     this.message = '';
   }
@@ -73,11 +95,12 @@ export class ChatComponent implements OnInit {
       this.userDataService.getLoggedInUserInfo(select)
         .subscribe(res => {
           this.user = res.data;
-          console.log(this.user);
+          // console.log(this.user);
 
         }, error => {
           console.log(error);
         });
+        return this.user;
     }
 
   logout(){
