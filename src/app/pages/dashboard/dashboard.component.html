@@ -1,0 +1,35 @@
+
+<!-- User list -->
+<div class="main">
+
+  <div class="chat-header">
+    <div class="chat-header__title">Chat</div>
+    <div class="user">
+      <p>{{user.name}}</p>
+      <button class="logout" (click)="logout()">Logout</button>
+    </div>
+  </div>
+
+
+  <div class="buttons">
+    <button mat-raised-button color="primary" (click)="groupChat()">Group Chat</button>
+    <button mat-raised-button color="primary" (click)="globalChat()">Global Chat</button>
+  </div>
+
+  <div class="userList">
+    <div class="userListHeader">
+      <div class="userListHeaderItem">Name</div>
+      <!-- <div class="userListHeaderItem">Email</div> -->
+    </div>
+    <div class="userListBody">
+      <div class="userListItem" *ngFor="let user of users">
+        <div class="row">
+          <div class="userListItemName" (click)="privateChat(user._id)">{{user.name}}</div>
+          <!-- <div class="userListItemEmail">{{user.email}}</div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

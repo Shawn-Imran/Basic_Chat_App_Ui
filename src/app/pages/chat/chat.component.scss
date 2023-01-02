@@ -167,18 +167,28 @@ button{
 }
 
 
-.main{
-  position: relative;
-  height: 100vh;
-}
 
 
 .chat-body__input{
-    position: absolute;
-    bottom: 2%;
-    left: 5%;
-    display: flex;
-    width: 90%;
-    justify-content: space-between;
+  position: sticky;
+  bottom: 1%;
+  background-color: aliceblue;
+  left: 5%;
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
 
+}
+
+.main{
+  position: relative;
+  height: 100vh;
+
+  .chat-body{
+    // height: 100vh;
+    .chat-body__messages{
+      height: calc(100vh - 160px);
+      overflow-y: scroll;
+    }
+  }
 }

@@ -1,0 +1,27 @@
+<div class="main">
+  <div class="chat">
+    <div class="chat-header">
+      <div class="chat-header__title">Chat</div>
+      <div class="user">
+        <p>{{user.name}}</p>
+        <button (click)="logout()">Logout</button>
+      </div>
+    </div>
+    <div class="chat-body">
+      <div class="chat-body__messages">
+        <div class="chat-body__message" *ngFor="let data of messages">
+          <div [ngClass]="data.senderId == user._id ? 'self' : 'leftright'">
+            <div class="userName"><p>{{data.sendername}}</p></div>
+          <div class="chat-body__message__text"><p> {{data.message}} </p></div>
+          </div>
+        </div>
+      </div>
+      <div class="chat-body__input">
+        <!-- <input type="text" [(ngModel)]="privatemessage"> -->
+        <input type="text" [(ngModel)]="message">
+        <button (click)="sendMessage()">Send</button>
+      </div>
+
+    </div>
+  </div>
+</div>

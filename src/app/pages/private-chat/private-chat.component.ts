@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { io } from 'socket.io-client';
 import { User } from 'src/app/interfaces/user';
@@ -7,13 +7,15 @@ import { UserDataService } from 'src/app/services/user-data.service';
 import { UserService } from 'src/app/services/user.service';
 
 
-const SOCKET_END_POINT = 'http://localhost:3001/chat';
+const SOCKET_END_POINT = 'http://localhost:3001/privatechat';
+
 @Component({
-  selector: 'app-chat',
-  templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.scss']
+  selector: 'app-private-chat',
+  templateUrl: './private-chat.component.html',
+  styleUrls: ['./private-chat.component.scss']
 })
-export class ChatComponent implements OnInit {
+export class PrivateChatComponent implements OnInit {
+
   socket:any;
   message!:string;
   messageobj:any = {};

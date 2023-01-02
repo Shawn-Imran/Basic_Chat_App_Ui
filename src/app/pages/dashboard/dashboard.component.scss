@@ -1,0 +1,108 @@
+.main{
+
+  .chat-header{
+    background-color: #0055cc;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    .chat-header__title{
+        font-size: 1.5rem;
+        font-weight: 400;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        line-height: 1.5;
+        text-align: left;
+        word-wrap: break-word;
+        white-space: pre-wrap;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+
+    }
+
+    .user{
+      display: flex;
+      align-items: center;
+
+      p{
+        margin: 0 0.5rem 0 0;
+        padding: 0;
+        line-height: 1.5;
+        text-align: left;
+        word-wrap: break-word;
+        white-space: pre-wrap;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+        color: #fff;
+        font-size: 1.2rem;
+        font-weight: 400;
+        margin-left: 0.5rem;
+      }
+    }
+
+    .logout{
+      background-color: #fff;
+      padding: 0.5rem;
+      border: none;
+      border-radius: 5px;
+      border: 1px solid #0055cc;
+      color: #0055cc;
+      font-size: 1.2rem;
+      font-weight: 400;
+      cursor: pointer;
+
+      &:hover{
+        border: 1px solid #cc0000;
+        color: #cc0000;
+      }
+    }
+}
+
+
+
+  .buttons{
+    margin-left: 30px;
+    button{
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #0055cc;
+      border-radius: 5px;
+      background-color: #0055cc;
+      color: #fff;
+      font-size: 16px;
+
+      &:hover{
+        background-color: #fff;
+        color: #0055cc;
+      }
+    }
+  }
+
+  .userList{
+
+    .userListHeader{
+      display: grid;
+      grid-template-columns: 50% 50%;
+      background-color: aliceblue;
+      padding: 40px;
+    }
+
+    .userListBody{
+      background-color: #fafafa;
+      padding: 20px;
+
+      .row{
+        display: grid;
+        grid-template-columns: 50% 50%;
+        padding: 20px;
+        border-bottom: 1px solid rgba(0,0,0,0.2);
+      }
+    }
+  }
+}
+

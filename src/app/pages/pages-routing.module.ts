@@ -9,10 +9,11 @@ const routes: Routes = [
     component: PagesComponent,
 
     children: [
+
       {
         path: '',
         canActivate: [UserAuthGuard],
-        loadChildren: () => import('./chat/chat.module').then(m => m.ChatModule)
+        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
       },
       {
         path: 'login',
@@ -21,6 +22,21 @@ const routes: Routes = [
       {
         path: 'register',
         loadChildren: () => import('./register/register.module').then(m => m.RegisterModule)
+      },
+      {
+        path: 'chat',
+        canActivate: [UserAuthGuard],
+        loadChildren: () => import('./chat/chat.module').then(m => m.ChatModule)
+      },
+      {
+        path: 'groupchat',
+        canActivate: [UserAuthGuard],
+        loadChildren: () => import('./groupchat/groupchat.module').then(m => m.GroupchatModule)
+      },
+      {
+        path: 'private-chat/:_id',
+        canActivate: [UserAuthGuard],
+        loadChildren: () => import('./private-chat/private-chat.module').then(m => m.PrivateChatModule)
       },
     ]
   }

@@ -220,4 +220,8 @@ export class UserService {
     return this.httpClient.post<{ success: boolean; message: string }>(API_USER + 'update-password', data);
   }
 
+  userList() {
+    return this.httpClient.get<{ success: boolean; message: string; data: User[] }>(API_USER + 'user-list');
+  }
+
 }
