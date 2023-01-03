@@ -1,3 +1,4 @@
+import { SocialAuthService } from '@abacritt/angularx-social-login';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/interfaces/user';
@@ -10,7 +11,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
+  loggedIn: boolean = false;
   isUserAuth = false;
   users: any = [];
   user: User = {
@@ -23,6 +24,7 @@ export class DashboardComponent implements OnInit {
     private userService: UserService,
     private router: Router,
     public userDataService: UserDataService,
+    private authService: SocialAuthService
   ) { }
 
   ngOnInit(): void {

@@ -12,7 +12,7 @@ import { PrivateChatComponent } from './private-chat/private-chat.component';
   ],
   imports: [
     CommonModule,
-    PagesRoutingModule
+    PagesRoutingModule,
   ]
 })
 export class PagesModule { }

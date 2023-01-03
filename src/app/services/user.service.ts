@@ -88,6 +88,26 @@ export class UserService {
       });
   }
 
+
+  fbLogin(data: { data:any }, redirectFrom?: string) {
+
+    this.httpClient.post<{ success: boolean; message: string; token: string; expiredIn: number }>
+    (API_USER + 'fb-login', data)
+      .subscribe(res => {
+        const getToken = res.token;
+        this.token = getToken;
+        // Make User Auth True..
+        if (getToken) {
+          this.onSuccessLogin(getToken, res.expiredIn);
+          // console.log("token", getToken); //done
+        }
+      }, () => {
+        this.isUser = false;
+        this.userStatusListener.next(false);
+        // console.log(error);
+      });
+  }
+
   /**
    * ON SUCCESS LOGIN
    */
@@ -114,9 +134,15 @@ export class UserService {
 
     // Navigate with Auth..
     if (redirectFrom) {
+      // console.log("redirectFrom", redirectFrom); //done
+
       this.router.navigate([redirectFrom]);
     } else {
+      // console.log("nevigate"); //done
+
       this.router.navigate([environment.userBaseUrl]);
+      console.log("nevigate", environment.userBaseUrl); //done
+
     }
   }
 

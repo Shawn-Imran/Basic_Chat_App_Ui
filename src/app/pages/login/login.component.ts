@@ -1,7 +1,11 @@
+import { FacebookLoginProvider, SocialAuthService } from '@abacritt/angularx-social-login';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+
+
+
 
 @Component({
   selector: 'app-login',
@@ -16,6 +20,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private userService: UserService,
+    private authService: SocialAuthService
   ) { }
 
   ngOnInit(): void {
@@ -23,6 +28,8 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
+
+
   }
 
   login(){
@@ -50,9 +57,25 @@ export class LoginComponent implements OnInit {
     //     }
     //   });
   }
-  user(user: any) {
-    throw new Error('Method not implemented.');
-  }
+  // user(user: any) {
+  //   throw new Error('Method not implemented.');
+  // }
 
+
+  signInWithFB(): void {
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then((user) => {
+      console.log(user);
+      const tempdata:any = {};
+      const name = user.firstName + user.lastName;
+      tempdata.fbId = user.id;
+      tempdata.name = name;
+      tempdata.email = user.email;
+      tempdata.image = user.photoUrl;
+      tempdata.fbToken = user.authToken;
+      tempdata.provider = user.provider;
+      console.log(tempdata);
+      this.userService.fbLogin(tempdata);
+    });
+  }
 
 }

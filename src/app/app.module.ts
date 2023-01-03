@@ -15,7 +15,8 @@ import { AuthUserInterceptor } from './auth-interceptor/auth-user.interceptor';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    
 
 
   ],
